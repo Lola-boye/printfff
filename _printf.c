@@ -1,10 +1,11 @@
 #include "main.h"
 
 /**
- * _printf - prinys required functions and statements
+ * _printf - prints required functions and statements
  *
- * @format: A string containing all the desired characters
- * Return: Always result
+ * @format: A character string
+ *
+ * Return: the number of characters printed (excluding the null byte used to end output to strings)
  */
 int _printf(const char *format, ...)
 {
