@@ -85,8 +85,8 @@ int print_address(va_list ap, params_t *params);
 
 /* specifier.c module */
 int (*get_specifier(char *s))(va_list ap, params_t *params);
-int get_print_func(char *s, va_list ap, params_t *params);
-int get_flag(char *s, params_t *params);
+int (*get_print(char s))(va_list, flags_t *);
+int get_flag(char s, flags_t *f);
 int get_modifier(char *s, params_t *params);
 char *get_width(char *s, params_t *params, va_list ap);
 
