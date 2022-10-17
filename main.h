@@ -79,7 +79,7 @@ int print_percent(va_list ap, params_t *params);
 int print_S(va_list ap, params_t *params);
 
 /* number.c module */
-char *convert(long int num, int base, int flags, params_t *params);
+char *convert(unsigned long int num, int base, int lowercase);
 int print_unsigned(va_list ap, params_t *params);
 int print_address(va_list ap, params_t *params);
 
@@ -90,7 +90,7 @@ int get_flag(char *s, params_t *params);
 int get_modifier(char *s, params_t *params);
 char *get_width(char *s, params_t *params, va_list ap);
 
-/* convert_number.c module */
+/* conversion.c module */
 int print_hex(va_list ap, params_t *params);
 int print_HEX(va_list ap, params_t *params);
 int print_binary(va_list ap, params_t *params);
