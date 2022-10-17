@@ -8,7 +8,7 @@
  * Return: result string
  * Authors: Ehoneah Obed & Abdulhakeem Badejo
  */
-char *convert(unsigned long int num, int base, int lowercase)
+char *convert(long int num, int base, int flags, params_t *params)
 {
 	static char *rep;
 	static char buffer[50];

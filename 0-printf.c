@@ -3,49 +3,51 @@
 /**
  * _printf - prints character and sends input into the standard output
  * @format: the format string
- * Return: number of bytes printed
+ * Return: always 0
  */
 
 int _printf(const char *format, ...)
-
 {
-	int sum = 0;
-	va_list ap;
-	char *p, *start;
+    int i = 0, length = 0, j = 0;
 
-	params_t params = PARAMS_INIT;
+    length = string_length(format, j);
 
-	va_start(ap, format);
+    va_list args;
+    va_start(args, format);
 
-	if (!format || (format[0] == '%' && !format[1]))/* checking for NULL char */
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
-	for (p = (char *)format; *p; p++)
-	{
-		init_params(&params, ap);
-		if (*p != '%')/*checking for the % specifier*/
-		{
-			sum += _putchar(*p);
-			continue;
-		}
-		start = p;
-		p++;
-		while (get_flag(p, &params)) /* while char at p is flag character */
-		{
-			p++; /* next character */
-		}
-		p = get_width(p, &params, ap);
-		p = get_precision(p, &params, ap);
-		if (get_modifier(p, &params))
-			p++;
-		if (!get_specifier(p))
-			sum += print_from_to(start, p,
-					params.l_modifier || params.h_modifier ? p - 1 : 0);
-		else
-			sum += get_print_func(p, ap, &params);
-	}
-	_putchar(BUF_FLUSH);
-	va_end(ap);
-	return (sum);
+    while (i < length)
+    {
+        if (format[i] != '%')
+        {
+           write_char(format[i]);
+        } else
+        {
+            i++;
+            switch(format[i])
+            {
+                case 'd':
+                {
+                    int x = va_arg(args, int);
+                    write_char(x + '0');
+                }
+            }
+        }
+        i++;
+    }
+    va_end(args);
+    return (0);
+}
+
+int string_length(const char *string, int x)
+{
+    if (*string != '\0')
+    {
+        return (string_length(string + 1, x + 1));
+    }
+        return (x);
+}
+
+int write_char(char c)
+{
+    return(write(1, &c, 1));
 }
