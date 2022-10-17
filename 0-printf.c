@@ -1,6 +1,18 @@
 #include "main.h"
 
 /**
+ * main - prints output
+ *
+ * Return - Always 0
+ */
+
+int main(void)
+{
+        printf("Hello world!\n");
+        return 0;
+}
+
+/**
  * get_op - select function for conversion char
  * @c: char to check
  * Return: pointer to function
